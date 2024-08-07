@@ -1,0 +1,53 @@
+package me.zoom.xannax.command;
+
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.zoom.xannax.Xannax;
+import me.zoom.xannax.command.commands.*;
+
+import java.util.ArrayList;
+
+public class CommandManager {
+    private static ArrayList<Command> commands;
+    boolean b;
+
+    public static void initCommands(){
+        commands = new ArrayList<>();
+        addCommand(new FontCommand());
+        addCommand(new BindCommand());
+        addCommand(new EnemyCommand());
+        addCommand(new FriendCommand());
+        addCommand(new DrawnCommand());
+        addCommand(new ToggleCommand());
+    }
+
+    public static void addCommand(Command c){
+        commands.add(c);
+    }
+
+    public static ArrayList<Command> getCommands(){
+        return commands;
+    }
+
+    public void callCommand(String input){
+        String[] split = input.split(" (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"); // Split by every space if it isn't surrounded by quotes // credit 086/KAMI
+        String command = split[0];
+        String args = input.substring(command.length()).trim();
+        b = false;
+        commands.forEach(c ->{
+            for(String s : c.getAlias()) {
+                if (s.equalsIgnoreCase(command)) {
+                    b = true;
+                    try {
+                        c.onCommand(args, args.split(" (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"));
+                    } catch (Exception e) {
+                        Command.sendClientMessage(ChatFormatting.GRAY + c.getSyntax());
+                    }
+                }
+            }
+        });
+        if(args.length() < 3 && args.equals("help")) {
+            Command.sendClientMessage(commands + "");
+        }
+        if(!b) Command.sendClientMessage(ChatFormatting.GRAY + "Unknown command!");
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "me.zoom.xannax.mixin.mixins",
+  "refmap": "mixins.xannax.refmap.json",
+  "mixins": [
+    "MixinNetworkManager",
+    "MixinRendererLivingEntity",
+    "MixinEntityRenderer",
+    "MixinPlayerControllerMP",
+    "MixinEntityPlayerSP",
+    "MixinMinecraft",
+    "MixinGuiIngame",
+    "MixinEntityPlayer",
+    "MixinEntity",
+    "MixinBlockSoulSand",
+    "MixinMovementInputFromOptions",
+    "MixinRenderPlayer",
+    "MixinItemRenderer",
+    "MixinGuiNewChat",
+    "MixinGuiBossOverlay",
+    "MixinLayerBipedArmor",
+    "MixinRenderEnderCrystal",
+    "MixinGuiScreen",
+    "MixinPlayerModel",
+    "MixinRenderItem",
+    "MixinAbstractClientPlayer"
+  ]
+}

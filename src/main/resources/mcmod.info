@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "xannax",
+        "name": "XannaX",
+        "description": "cock",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": [],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }
+]
